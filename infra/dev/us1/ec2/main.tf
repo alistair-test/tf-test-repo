@@ -11,21 +11,3 @@ resource "aws_instance" "web_app" {
   instance_type = "t3.large"
 }
 
-module "ec2_instance" {
-  source  = "git@github.com:infracost/terraform-private-module-example.git"
-  version = "~> 3.0"
-
-  name = "single-instance"
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
